@@ -1,4 +1,4 @@
-def process_classification(text):
+def summarize_text(text):
     # Perform the necessary operations to classify the text
     # Replace this with your actual text classification logic
     
