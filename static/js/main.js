@@ -1,25 +1,3 @@
-// function sendText() {
-//     const inputText = document.getElementById('input-text').value; // Get the text from the input box
-  
-//     // Make an HTTP POST request to the server
-//     fetch('/process-text', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({ text: inputText })
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//       // Display the return message in the summary box
-//       document.getElementById('summary-text').innerText = data.message;
-//     })
-//     .catch(error => {
-//       // Handle any errors that occur during the request
-//       console.error('Error:', error);
-//     });
-// }
-
 document.getElementById('text-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent form submission
     
