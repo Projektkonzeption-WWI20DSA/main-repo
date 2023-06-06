@@ -15,3 +15,15 @@ data/archive (2).zip
 data/archive (1).zip
 data/abstracts/arxiv_data_210930-054931.csv
 data/abstracts/arxiv_data.csv
+data/articles1.csv
+data/articles2.csv
+data/articles3.csv
+data/arxiv_data.csv
+data/arxiv_data_210930-054931.csv
+data/Reddit_Data.csv
+data/song_lyrics.csv
+data/Twitter_Data.csv
+merge_data.ipynb
+data/blogtext.csv
+data/moviedataset.csv
+data.csv
