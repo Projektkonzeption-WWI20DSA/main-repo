@@ -23,7 +23,6 @@ data/arxiv_data_210930-054931.csv
 data/Reddit_Data.csv
 data/song_lyrics.csv
 data/Twitter_Data.csv
-merge_data.ipynb
 data/blogtext.csv
 data/moviedataset.csv
 data.csv
