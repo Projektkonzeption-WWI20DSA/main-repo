@@ -8,7 +8,7 @@
 - Projektauftrag: https://docs.google.com/document/d/18aViCpW6MjI9Vd8EfT43Y_gWPoJc6jRY/edit?usp=share_link&ouid=118131299436790721314&rtpof=true&sd=true
 - Projektstrukturplan: https://de.overleaf.com/5969736439ffddxzxfvkkh
 - Powerpoint präsentation für Milenstein 1: https://onedrive.live.com/edit.aspx?resid=151A1D3A83823209!6276&ithint=file%2cpptx&authkey=!AGKH6gaK4cMOx7M
-
+- Datenoverview: https://docs.google.com/spreadsheets/d/1Ao4AXzcxP6CF7MxJtBZ7itrM7ZmydxwnM8shs1syXGY/edit?usp=sharing
 ## Deadlines
 - 24.05.2023 – Projektauftrag
 - 22.06.2023 – Zwischenstand
