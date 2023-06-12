@@ -11,7 +11,7 @@
 - Datenoverview: https://docs.google.com/spreadsheets/d/1Ao4AXzcxP6CF7MxJtBZ7itrM7ZmydxwnM8shs1syXGY/edit?usp=sharing
 ## Deadlines
 - 24.05.2023 – Projektauftrag
-- 22.06.2023 – Zwischenstand
+- 20.06.2023 – Zwischenstand
 - 27.07.2023 – Abschlusspräsentation
 
 ## Projektauftrag
