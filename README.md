@@ -7,7 +7,8 @@
 - Lasten- und Pflichtenheft: https://de.overleaf.com/project/637cfebd90b4440355a52efb
 - Projektauftrag: https://docs.google.com/document/d/18aViCpW6MjI9Vd8EfT43Y_gWPoJc6jRY/edit?usp=share_link&ouid=118131299436790721314&rtpof=true&sd=true
 - Projektstrukturplan: https://de.overleaf.com/5969736439ffddxzxfvkkh
-- Powerpoint präsentation für Milenstein 1: https://onedrive.live.com/edit.aspx?resid=151A1D3A83823209!6276&ithint=file%2cpptx&authkey=!AGKH6gaK4cMOx7M
+- PowerPoint-Präsentation für Meilenstein 1: https://onedrive.live.com/edit.aspx?resid=151A1D3A83823209!6276&ithint=file%2cpptx&authkey=!AGKH6gaK4cMOx7M
+- PowerPoint-Präsentation für Meilenstein 2: https://bwedu-my.sharepoint.com/:p:/r/personal/qusay_hamid_bwedu_de/Documents/Uni/6.%20Semester/Projektrealisierung/Projektrealisierung%20-%20Pr%C3%A4si2.pptx?d=wc0076b57cc274607945fed77ef0d523e&csf=1&web=1&e=Zcwrye
 - Datenoverview: https://docs.google.com/spreadsheets/d/1Ao4AXzcxP6CF7MxJtBZ7itrM7ZmydxwnM8shs1syXGY/edit?usp=sharing
 ## Deadlines
 - 24.05.2023 – Projektauftrag
