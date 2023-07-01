@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 from models import summary, classification  # Import the Python files
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+app.config["UPLOAD_FOLDER"] = "static/"
 
 @app.route('/')
 def home():
@@ -39,6 +41,22 @@ def process_classification():
     # Return the classification response
     response = {'classification': classification_result}
     return jsonify(response)
+
+# Uploading files
+
+@app.route('/display', methods = ['GET', 'POST'])
+def save_file():
+    if request.method == 'POST':
+        f = request.files['file']
+        filename = secure_filename(f.filename)
+
+        f.save(app.config['UPLOAD_FOLDER'] + filename)
+
+        file = open(app.config['UPLOAD_FOLDER'] + filename,"r")
+        content = file.read()
+        
+        
+    return render_template('content.html', content=content) 
 
 if __name__ == '__main__':
     app.run()
