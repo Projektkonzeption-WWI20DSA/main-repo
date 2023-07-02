@@ -32,3 +32,4 @@ balenced_data.csv
 data/
 Pipfile
 models/
+trained_model.joblib
