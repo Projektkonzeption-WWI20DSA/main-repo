@@ -29,7 +29,9 @@ data.csv
 data/balenced_data.csv
 Data\data.csv
 Data/balenced_data.csv
+Data\legal
 balenced_data.csv
 data/
 Pipfile
 models/
+trained_model.joblib
