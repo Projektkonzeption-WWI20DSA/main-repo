@@ -40,12 +40,12 @@ def index():
             if request.form.get('summary'):
                 print("Summary Selected")
                 # summary_result = summary.process_summary(text)
-                processed_text = text
+                content = text + "text wurde verarbeitet"
 
             if request.form.get('classification'):
                 print("Classification Selected")
                 # classification_result = classification.process_classification(text)
-                processed_text = text
+                content = text
 
             # processed_text = text
 
