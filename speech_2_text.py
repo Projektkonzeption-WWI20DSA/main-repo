@@ -30,7 +30,7 @@ async def send_receive():
 
 	async with websockets.connect(
 		URL,
-		extra_headers=(("Authorization", 'api_key')),
+		extra_headers=(("Authorization", 'apikey'),),
 		ping_interval=5,
 		ping_timeout=20
 	) as _ws:
