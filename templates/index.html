@@ -22,29 +22,57 @@
       </div>
     </nav>
 
+    <!-- Content Box -->
     <div class="container py-4 flex-grow-1">
-      
+  
       <!-- Input Group -->
-      <div class="row mb-5">
-        <form action="/" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-              <label for="file">Upload File:</label>
-              <input type="file" class="form-control-file" id="file" name="file">
+      <div class="card mb-3 text-center">
+        <h5 class="card-header">Text Input</h5>
+        <div class="card-body">
+          <div class="row mb-5">
+
+            <form class="row g-3" action="/" method="post" enctype="multipart/form-data">
+
+              <!-- File Upload -->
+              <div class="col-lg-6 themed-grid-col">
+                <div class="form-group">
+                  <label for="file" class="form-label">Choose a file to be uploaded:</label>
+                  <input class="form-control" type="file" id="file" name="file">
+                  <!-- <label for="file">Upload File:</label>
+                  <input type="file" class="form-control-file" id="file" name="file"> -->
+                </div>
+              </div>
+
+              <!-- Voice Input -->
+              <div class="col-lg-6 themed-grid-col">
+                <p> Voice Input goes here...</p>
+              </div>
+              
+              <!-- Settings Selection -->
+              <div class="col-6 col-md-4 themed-grid-col"></div>
+              <div class="col-6 col-md-4 themed-grid-col">
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="summary" name="summary" value="summary">
+                  <label class="form-check-label" for="summary">Summary</label>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="classification" name="classification" value="classification">
+                  <label class="form-check-label" for="classification">Classification</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Process Text</button>
+                </div>
+              <div class="col-6 col-md-4 themed-grid-col"></div>
+
+              
+            </form>
           </div>
-          <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="summary" name="summary" value="summary">
-              <label class="form-check-label" for="summary">Summary</label>
+          <div class="input-group mb-3">
+            <textarea class="form-control" id="input-text" name="input-text" rows="6">{{ content }}</textarea>
           </div>
-          <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="classification" name="classification" value="classification">
-              <label class="form-check-label" for="classification">Classification</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Process Text</button>
-        </form>
+        </div>
       </div>
-      <div class="input-group mb-3">
-        <textarea class="form-control" id="input-text" name="input-text" rows="6" placeholder="Enter your text here...">{{ content }}</textarea>
-      </div>
+
+      
 
       <!-- Output Group -->
       <div class="row">
@@ -54,11 +82,11 @@
               <h4>Zusammenfassen</h4>
             </div>
             <div class="card-body text-center">
-              <button class="btn btn-primary btn-lg btn-block" onclick="summarizeText()">Zusammenfassen</button>
+              <!-- <button class="btn btn-primary btn-lg btn-block" onclick="summarizeText()">Zusammenfassen</button> -->
               <div class="form-group mt-3">
-                <label for="compression-slider">Kompressions-Rate:</label>
+                <!-- <label for="compression-slider">Kompressions-Rate:</label>
                 <input type="range" class="form-range" id="compression-slider" min="0" max="80" step="1">
-                <div id="compression-value" class="text-center mt-2">40%</div>
+                <div id="compression-value" class="text-center mt-2">40%</div> -->
                 <textarea class="form-control mt-3" placeholder="Hier erscheint die Zusammenfassung..." readonly></textarea>
               </div>
             </div>
@@ -70,7 +98,7 @@
               <h4>Klassifizieren</h4>
             </div>
             <div class="card-body text-center">
-              <button class="btn btn-primary btn-lg btn-block" onclick="classifyText()">Klassifizieren</button>
+              <!-- <button class="btn btn-primary btn-lg btn-block" onclick="classifyText()">Klassifizieren</button> -->
               <textarea class="form-control mt-2" placeholder="Hier erscheint die Klasse..." readonly></textarea>
             </div>
           </div>
