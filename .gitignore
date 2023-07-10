@@ -35,3 +35,4 @@ models/
 trained_model.joblib
 __pycache__/app.cpython-39.pyc
 __pycache__/app.cpython-39.pyc
+*.pyc
