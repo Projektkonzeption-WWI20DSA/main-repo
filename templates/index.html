@@ -67,6 +67,8 @@
                 <div class="form-check form-switch mb-3">
                   <input class="form-check-input" type="checkbox" role="switch" id="summary" name="summary" value="summary">
                   <label class="form-check-label" for="summary">Summary</label>
+                  <input type="range" class="form-range" id="compression-slider" min="0" max="80" step="1">
+                  <div id="compression-value" class="text-center mt-2">40%</div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Process Text</button>
@@ -80,7 +82,7 @@
           <div class="input-group mb-3">
             <textarea class="form-control" id="input-text" name="input-text" rows="6">{{ content }}</textarea>
           </div>
-          
+
         </div>
       </div>
 
