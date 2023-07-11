@@ -49,26 +49,38 @@
               </div>
               
               <!-- Settings Selection -->
-              <div class="col-6 col-md-4 themed-grid-col"></div>
-              <div class="col-6 col-md-4 themed-grid-col">
-                <div class="form-check mb-3">
+              <div class="col-sm-5 themed-grid-col"></div>
+              <div class="col-sm-2 themed-grid-col">
+                <!-- <div class="form-check mb-3">
                   <input class="form-check-input" type="checkbox" id="summary" name="summary" value="summary">
                   <label class="form-check-label" for="summary">Summary</label>
                 </div>
                 <div class="form-check mb-3">
                   <input class="form-check-input" type="checkbox" id="classification" name="classification" value="classification">
                   <label class="form-check-label" for="classification">Classification</label>
+                </div> -->
+
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="classification" id="classification" name="classification" value="classification">
+                  <label class="form-check-label" for="classification">Classification</label>
                 </div>
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" role="switch" id="summary" name="summary" value="summary">
+                  <label class="form-check-label" for="summary">Summary</label>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Process Text</button>
                 </div>
-              <div class="col-6 col-md-4 themed-grid-col"></div>
-
+              <div class="col-sm-5 themed-grid-col"></div>
               
             </form>
           </div>
+
+          <!-- Text area -->
           <div class="input-group mb-3">
             <textarea class="form-control" id="input-text" name="input-text" rows="6">{{ content }}</textarea>
           </div>
+          
         </div>
       </div>
 
