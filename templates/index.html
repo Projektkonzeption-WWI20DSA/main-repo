@@ -93,27 +93,20 @@
         <div class="col-lg-6">
           <div class="card mb-3">
             <div class="card-header">
-              <h4>Zusammenfassen</h4>
+              <h4>Summary</h4>
             </div>
-            <div class="card-body text-center">
-              <!-- <button class="btn btn-primary btn-lg btn-block" onclick="summarizeText()">Zusammenfassen</button> -->
-              <div class="form-group mt-3">
-                <!-- <label for="compression-slider">Kompressions-Rate:</label>
-                <input type="range" class="form-range" id="compression-slider" min="0" max="80" step="1">
-                <div id="compression-value" class="text-center mt-2">40%</div> -->
-                <textarea class="form-control mt-3" placeholder="Hier erscheint die Zusammenfassung..." readonly></textarea>
-              </div>
+             <div class="card-body text-center">
+              <textarea class="form-control mt-2" id="summary_output" placeholder="The summary will be displayed here..." readonly></textarea>
             </div>
           </div>
         </div>
         <div class="col-lg-6">
           <div class="card mb-3">
             <div class="card-header">
-              <h4>Klassifizieren</h4>
+              <h4>Classification</h4>
             </div>
             <div class="card-body text-center">
-              <!-- <button class="btn btn-primary btn-lg btn-block" onclick="classifyText()">Klassifizieren</button> -->
-              <textarea class="form-control mt-2" placeholder="Hier erscheint die Klasse..." readonly></textarea>
+              <textarea class="form-control mt-2" id="classification_output" placeholder="The class will be displayed here..." readonly></textarea>
             </div>
           </div>
         </div>
