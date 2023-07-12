@@ -16,7 +16,7 @@ def index():
     processed_text = None
     summary_result = None
     classification_result = None
-    content = ''
+    content = 'Enter your text here or upload a file...'
 
     if request.method == 'POST':
         text = request.form.get('input-text')
