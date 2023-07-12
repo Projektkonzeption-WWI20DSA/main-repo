@@ -33,3 +33,4 @@ data/
 Pipfile
 models/
 trained_model.joblib
+__pycache__/
