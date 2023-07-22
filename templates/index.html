@@ -8,17 +8,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/icon.svg') }}" type="image/svg+xml">
+    <script src="https://kit.fontawesome.com/8d857e13d6.js" crossorigin="anonymous"></script>
   </head>
 
 
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img  src="{{ url_for('static', filename='img/icon.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-          <span class="h3">Text analysis</span>
-        </a>
+      <a class="navbar-brand" href="#">
+        <img  src="{{ url_for('static', filename='img/icon.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+        <span class="h3">Text analysis</span>
+      </a>
+      <div class="container-fluid">
+        <button id="darkModeButton" class="btn btn-secondary" type="button" onclick="toggleDarkMode()">
+          <i class="fas fa-adjust"></i>
+        </button>
       </div>
     </nav>
 
@@ -46,9 +50,14 @@
               <!-- Voice Input -->
               <div class="col-lg-6 themed-grid-col">
                 <p> Voice Input goes here...</p>
+                <button id="microphoneButton" class="btn btn-primary" type="button" onclick="toggleSpeechRecognition()">
+                  <i class="fa-solid fa-microphone"></i>
+                  Start Recording
+                </button>
               </div>
               
               <!-- Settings Selection -->
+              <hr>
               <div class="col-sm-5 themed-grid-col"></div>
               <div class="col-sm-2 themed-grid-col">
                 <!-- <div class="form-check mb-3">
@@ -73,8 +82,9 @@
                   <div id="compression-value" class="text-center mt-2">40%</div>
                 </div>
                 <!-- Processing Button -->
+                <input type="hidden" id="speechText" name="speechText">
                 <button type="submit" class="btn btn-primary" data-bs-toggle="tooltip">Process Text</button>
-                </div>
+              </div>
               <div class="col-sm-5 themed-grid-col"></div>
               
             </form>
@@ -124,6 +134,9 @@
 
     <!-- Disable Slider, until summary is acitvated -->
     <script>
+      let recognition = null;
+      let isRecording = false;
+
       document.addEventListener("DOMContentLoaded", function(){
         var checkbox = document.getElementById('summary');
         var slider = document.getElementById('compression-slider');
@@ -140,6 +153,64 @@
           }
         });
       });
+
+    // Source: https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
+    // This code will not work on the firefox browser
+    function showAPINotSupportedNotification() {
+      alert("Web Speech API is not supported in this browser.");
+    }
+
+    function updateTextArea(text) {
+      const inputText = document.getElementById("input-text");
+      inputText.value = text;
+
+      const hiddenInput = document.getElementById("speechText");
+      hiddenInput.value = text;
+    }
+
+    function toggleSpeechRecognition() {
+      if (!window.webkitSpeechRecognition) {
+        showAPINotSupportedNotification();
+        return;
+      }
+
+      if (!recognition) {
+        recognition = new webkitSpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+
+        recognition.onresult = function(event) {
+          let transcript = "";
+
+          for (let i = event.resultIndex; i < event.results.length; i++) {
+            if (event.results[i].isFinal) {
+              transcript += event.results[i][0].transcript + " ";
+            } else {
+              transcript += event.results[i][0].transcript;
+            }
+          }
+          updateTextArea(transcript);
+        };
+      }
+
+      if (isRecording) {
+        recognition.stop();
+        isRecording = false;
+        document.getElementById("microphoneButton").classList.remove("btn-danger"); 
+        microphoneButton.innerHTML = '<i class="fa-solid fa-microphone"></i>  Start Recording';
+      } else {
+        recognition.start();
+        isRecording = true;
+        document.getElementById("microphoneButton").classList.add("btn-danger"); 
+        microphoneButton.innerHTML = '<i class="fa-solid fa-microphone"></i>  Stop Recording';
+      }
+    }
+
+
+    function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle("dark-mode");
+    }
     </script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
