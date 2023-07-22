@@ -60,18 +60,20 @@
                   <label class="form-check-label" for="classification">Classification</label>
                 </div> -->
 
+                <!-- Classification Check -->
                 <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" role="classification" id="classification" name="classification" value="classification">
                   <label class="form-check-label" for="classification">Classification</label>
                 </div>
+                <!-- Summary Check -->
                 <div class="form-check form-switch mb-3">
                   <input class="form-check-input" type="checkbox" role="switch" id="summary" name="summary" value="summary">
                   <label class="form-check-label" for="summary">Summary</label>
                   <input type="range" class="form-range" id="compression-slider" min="0" max="80" step="1">
                   <div id="compression-value" class="text-center mt-2">40%</div>
                 </div>
-
-                <button type="submit" class="btn btn-primary">Process Text</button>
+                <!-- Processing Button -->
+                <button type="submit" class="btn btn-primary" data-bs-toggle="tooltip">Process Text</button>
                 </div>
               <div class="col-sm-5 themed-grid-col"></div>
               
