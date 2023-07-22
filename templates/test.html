@@ -1,130 +1,214 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <title>Text Summarization and Classification</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.svg') }}" type="image/svg+xml">
+    <script src="https://kit.fontawesome.com/8d857e13d6.js" crossorigin="anonymous"></script>
+  </head>
 
-<head>
-    <title>Input Group Example</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-</head>
+  <body>
+    <!-- Theme Button -->
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn bg-primary text-white py-2 dropdown-toggle d-flex align-items-center"
+          id="bd-theme"
+          type="button"
+          aria-expanded="false"
+          data-bs-toggle="dropdown"
+          aria-label="Toggle theme (auto)">
+        <i class="bi bi-circle-half theme-icon-active my-1" style="font-size: 1em;"></i>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
 
-<body class="container md-4 text-center">
-
-    <div class="input-group mt-4">
-        <textarea class="form-control" placeholder="Geben sie hier ihren Text ein..."></textarea>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <i class="bi bi-sun-fill me-2 opacity-50 theme-icon" style="font-size: 1em;"></i>
+            Light
+            <i class="bi bi-check2 ms-auto d-none" style="font-size: 1em;"></i>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <i class="bi bi-moon-stars-fill me-2 opacity-50 theme-icon" style="font-size: 1em;"></i>
+            Dark
+            <i class="bi bi-check2 ms-auto d-none" style="font-size: 1em;"></i>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <i class="bi bi-circle-half me-2 opacity-50 theme-icon" style="font-size: 1em;"></i>
+            Auto
+            <i class="bi bi-check2 ms-auto d-none" style="font-size: 1em;"></i>
+          </button>
+        </li>
+      </ul>
     </div>
-   
-    <!-- <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-
-            <div class="input-group mt-3">
-               
-            </div>
-        </div>
-        <div class="col-sm-4">
-        </div>
-        <div class="col-sm-4"></div>
-    </div> -->
-    
-    <div class="row">
-        <div class="col-6">
-            <button class="btn btn-primary" type="button">Zusammenfassen</button>
-            <label for="summary-range" class="form-label">Summary Rate:</label>
-            <input type="range" class="form-range" id="summary-range" min="0" max="80" value="40">
-        </div>
-        <div class="col-6">
-            <button class="btn btn-primary" type="button">Klassifizieren</button>
-        </div>
-    </div>
 
 
-    <!-- <div class="input-group mt-3"> </div> -->
-    
-
-    <!-- <div class="container mt-4">
-        <div class="input-group">
-            <textarea class="form-control" placeholder="Enter your text here"></textarea>
-        </div>
-
-        <div class="input-group mt-3">
-            <button class="btn btn-primary me-2" type="button">Zusammenfassen</button>
-            <button class="btn btn-primary" type="button">Klassifizieren</button>
-        </div>
-
-        <div class="input-group mt-3">
-            <label for="summary-range" class="form-label">Summary Rate:</label>
-            <input type="range" class="form-range" id="summary-range" min="0" max="80" value="40">
-        </div>
-    </div> -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Text Summarization and Classification</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='img/icon.svg') }}" type="image/svg+xml">
-</head>
-
-<body class="d-flex flex-column min-vh-100">
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+    <!-- Navabr -->
+    <nav class="navbar navbar-expand-lg navbar bg">
       <a class="navbar-brand" href="#">
         <img  src="{{ url_for('static', filename='img/icon.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-        <span class="h3">Text Summarization and Classification</span>
+        <span class="h3">Text analysis</span>
       </a>
-    </div>
-  </nav>
+    </nav>
+
+    <!-- Content Box -->
+    <div class="container py-4 flex-grow-1">
   
-  <div class="container py-4 flex-grow-1">
-    <!-- Input Group -->
-    <div class="input-group mb-3">
-      <textarea class="form-control" id="input-text" name="input-text" rows="6" placeholder="Enter your text here..."></textarea>
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="card mb-3">
-          <div class="card-header">
-            <h4>Zusammenfassen</h4>
+      <!-- Input Group -->
+      <div class="card mb-3 text-center">
+        <h5 class="card-header">Text Input</h5>
+        <div class="card-body">
+          <div class="row mb-5">
+
+            <form class="row g-3" action="/" method="post" enctype="multipart/form-data">
+
+              <!-- File Upload -->
+              <div class="col-lg-6 themed-grid-col">
+                <div class="form-group">
+                  <label for="file" class="form-label">Choose a file to be uploaded:</label>
+                  <input class="form-control" type="file" id="file" name="file">
+                  <!-- <label for="file">Upload File:</label>
+                  <input type="file" class="form-control-file" id="file" name="file"> -->
+                </div>
+              </div>
+
+              <!-- Voice Input -->
+              <div class="col-lg-6 themed-grid-col">
+                <p> Voice Input goes here...</p>
+                <button id="microphoneButton" class="btn btn-primary" type="button" onclick="toggleSpeechRecognition()">
+                  <i class="fa-solid fa-microphone"></i>
+                  Start Recording
+                </button>
+              </div>
+              
+              <!-- Settings Selection -->
+              <hr>
+              <div class="col-sm-5 themed-grid-col"></div>
+              <div class="col-sm-2 themed-grid-col">
+                <!-- <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="summary" name="summary" value="summary">
+                  <label class="form-check-label" for="summary">Summary</label>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="classification" name="classification" value="classification">
+                  <label class="form-check-label" for="classification">Classification</label>
+                </div> -->
+
+                <!-- Classification Check -->
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="classification" id="classification" name="classification" value="classification">
+                  <label class="form-check-label" for="classification">Classification</label>
+                </div>
+                <!-- Summary Check -->
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" role="switch" id="summary" name="summary" value="summary">
+                  <label class="form-check-label" for="summary">Summary</label>
+                  <input type="range" class="form-range" id="compression-slider" min="0" max="80" step="1">
+                  <div id="compression-value" class="text-center mt-2">40%</div>
+                </div>
+                <!-- Processing Button -->
+                <input type="hidden" id="speechText" name="speechText">
+                <button type="submit" class="btn btn-primary" data-bs-toggle="tooltip">Process Text</button>
+              </div>
+              <div class="col-sm-5 themed-grid-col"></div>
+              
+            </form>
           </div>
-          <div class="card-body text-center">
-            <button class="btn btn-primary btn-lg btn-block" onclick="summarizeText()">Zusammenfassen</button>
-            <div class="form-group mt-3">
-              <label for="compression-slider">Kompressions-Rate:</label>
-              <input type="range" class="form-range" id="compression-slider" min="0" max="80" step="1">
-              <div id="compression-value" class="text-center mt-2">40%</div>
-              <textarea class="form-control mt-3" placeholder="Hier erscheint die Zusammenfassung..." readonly></textarea>
+
+          <!-- Text area -->
+          <div class="input-group mb-3">
+            <textarea class="form-control" id="input-text" name="input-text" rows="6">{{ content }}</textarea>
+          </div>
+
+        </div>
+      </div>
+
+      
+
+      <!-- Output Group -->
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h4>Summary</h4>
+            </div>
+             <div class="card-body text-center">
+              <textarea class="form-control mt-2" id="summary_output" placeholder="The summary will be displayed here..." readonly></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h4>Classification</h4>
+            </div>
+            <div class="card-body text-center">
+              <textarea class="form-control mt-2" id="classification_output" placeholder="The class will be displayed here..." readonly></textarea>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="card mb-3">
-          <div class="card-header">
-            <h4>Klassifizieren</h4>
-          </div>
-          <div class="card-body text-center">
-            <button class="btn btn-primary btn-lg btn-block" onclick="classifyText()">Klassifizieren</button>
-            <textarea class="form-control mt-2" placeholder="Hier erscheint die Klasse..." readonly></textarea>
-          </div>
-        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-body-tertiary">
+      <div class="container">
+        <span class="text-muted">&copy; 2023 Projektname</span>
       </div>
-    </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
-  <!-- Footer -->
-  <footer class="footer bg-light text-center py-3 mt-auto">
-    <div class="container">
-      <span class="text-muted">&copy; 2023 Projektname</span>
-    </div>
-  </footer>
 
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          // Get all dropdown items
+          const themeDropdownItems = document.querySelectorAll('.dropdown-item');
+          
+          // Get theme button and its icon
+          const themeButton = document.querySelector('#bd-theme');
+          const themeButtonIcon = themeButton.querySelector('i');
+
+          // Map themes to their corresponding icon classes
+          const themeIcons = {
+              'light': 'bi-sun-fill',
+              'dark': 'bi-moon-stars-fill',
+              'auto': 'bi-circle-half'
+          };
+
+          // Attach click event listener to each dropdown item
+          themeDropdownItems.forEach((item) => {
+              item.addEventListener('click', function() {
+                  // Get the selected theme from the clicked item's data-bs-theme-value attribute
+                  const selectedTheme = this.getAttribute('data-bs-theme-value');
+                  
+                  // Set the selected theme as the data-bs-theme attribute on the html tag
+                  document.documentElement.setAttribute('data-bs-theme', selectedTheme);
+                  
+                  // Update theme button icon
+                  themeButtonIcon.className = `bi ${themeIcons[selectedTheme]} theme-icon-active my-1`;
+
+                  // Iterate over all dropdown items and remove 'active' class and set aria-pressed to false
+                  themeDropdownItems.forEach((otherItem) => {
+                      otherItem.classList.remove('active');
+                      otherItem.setAttribute('aria-pressed', 'false');
+                  });
+
+                  // Add 'active' class to the selected item and set aria-pressed to true
+                  this.classList.add('active');
+                  this.setAttribute('aria-pressed', 'true');
+              });
+          });
+      });
+
+    </script>
+  </body>
 </html>
