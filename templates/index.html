@@ -15,11 +15,14 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img  src="{{ url_for('static', filename='img/icon.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-          <span class="h3">Text analysis</span>
-        </a>
+      <a class="navbar-brand" href="#">
+        <img  src="{{ url_for('static', filename='img/icon.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+        <span class="h3">Text analysis</span>
+      </a>
+      <div class="container-fluid">
+        <button id="darkModeButton" class="btn btn-secondary" type="button" onclick="toggleDarkMode()">
+          <i class="fas fa-adjust"></i>
+        </button>
       </div>
     </nav>
 
@@ -170,35 +173,41 @@
       }
 
       if (!recognition) {
-      recognition = new webkitSpeechRecognition();
-      recognition.continuous = true;
-      recognition.interimResults = true;
+        recognition = new webkitSpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
 
-      recognition.onresult = function(event) {
-        let transcript = "";
+        recognition.onresult = function(event) {
+          let transcript = "";
 
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          if (event.results[i].isFinal) {
-            transcript += event.results[i][0].transcript + " ";
-          } else {
-            transcript += event.results[i][0].transcript;
+          for (let i = event.resultIndex; i < event.results.length; i++) {
+            if (event.results[i].isFinal) {
+              transcript += event.results[i][0].transcript + " ";
+            } else {
+              transcript += event.results[i][0].transcript;
+            }
           }
-        }
-        updateTextArea(transcript);
-      };
+          updateTextArea(transcript);
+        };
+      }
+
+      if (isRecording) {
+        recognition.stop();
+        isRecording = false;
+        document.getElementById("microphoneButton").classList.remove("btn-danger"); 
+        microphoneButton.innerHTML = '<i class="fa-solid fa-microphone"></i>  Start Recording';
+      } else {
+        recognition.start();
+        isRecording = true;
+        document.getElementById("microphoneButton").classList.add("btn-danger"); 
+        microphoneButton.innerHTML = '<i class="fa-solid fa-microphone"></i>  Stop Recording';
+      }
     }
 
-    if (isRecording) {
-      recognition.stop();
-      isRecording = false;
-      document.getElementById("microphoneButton").classList.remove("btn-danger"); 
-      microphoneButton.innerHTML = '<i class="fa-solid fa-microphone"></i>  Start Recording';
-    } else {
-      recognition.start();
-      isRecording = true;
-      document.getElementById("microphoneButton").classList.add("btn-danger"); 
-      microphoneButton.innerHTML = '<i class="fa-solid fa-microphone"></i>  Stop Recording';
-    }
+
+    function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle("dark-mode");
     }
     </script>
     

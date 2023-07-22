@@ -1,0 +1,5 @@
+body.dark-mode {
+    /* Set the background color, text color, etc. for dark mode */
+    background-color: #333;
+    color: #fff;
+}
