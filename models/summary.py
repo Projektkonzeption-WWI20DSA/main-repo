@@ -1,4 +1,4 @@
-def classify_text(text):
+def summerize_text(text):
     # Perform the necessary operations to generate the summary
     # Replace this with your actual summary generation logic
     
