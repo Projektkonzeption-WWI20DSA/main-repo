@@ -73,6 +73,7 @@
                   <div id="compression-value" class="text-center mt-2">40%</div>
                 </div>
 
+                <input type="hidden" id="speechText" name="speechText">
                 <button type="submit" class="btn btn-primary">Process Text</button>
               </div>
               <div class="col-sm-5 themed-grid-col"></div>
@@ -161,6 +162,9 @@
     function updateTextArea(text) {
       const inputText = document.getElementById("input-text");
       inputText.value = text;
+
+      const hiddenInput = document.getElementById("speechText");
+      hiddenInput.value = text;
     }
 
     function toggleSpeechRecognition() {
