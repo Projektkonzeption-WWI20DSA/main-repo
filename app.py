@@ -2,7 +2,36 @@ from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 import docx2txt
 import os
-from models import summary, classification
+from models import classification
+import gensim.downloader as api
+import numpy as np
+from dataclasses import dataclass
+from typing import Dict, List, Tuple
+from nltk.tokenize import sent_tokenize
+from sklearn.cluster import KMeans
+import re
+from gensim.models.word2vec import Word2Vec
+import string
+from typing import Union
+from word_2_vec_preprocessing import Preprocessing, Embedder, Clustering, Word2VecSummarizer
+from load_model import load_model
+
+summarizer = load_model()
+print('MODEL LOADED')
+
+def count_phrases(text):
+    def split_sentence(text):
+        """used to split given text into sentences"""
+        sentences = sent_tokenize(text)
+        return [sent for sent in sentences]
+    return len(sent_tokenize(text))
+
+def summarize_text(text, len_text, compression_rate, summarizer):
+    sentences = summarizer.summarize(text, num_sentences=(len_text-round(len_text*compression_rate)))
+    summary = ''
+    for i in sentences:
+        summary = summary + ' ' + i
+    return summary
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "uploads"
