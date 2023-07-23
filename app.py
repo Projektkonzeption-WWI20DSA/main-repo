@@ -21,9 +21,7 @@ def index():
     if request.method == 'POST':
         text = request.form.get('input-text')
         file = request.files.get('file')
-        speech_text = request.form.get('speechText')
-        text = speech_text
-        print("text:\t", speech_text)
+        
 
         if file and allowed_file(file.filename):
             if file.filename.endswith('.docx'):
