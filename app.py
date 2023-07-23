@@ -2,7 +2,23 @@ from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 import docx2txt
 import os
-from models import summary, classification
+from models import classification
+import gensim.downloader as api
+import numpy as np
+from dataclasses import dataclass
+from typing import Dict, List, Tuple
+from nltk.tokenize import sent_tokenize
+from sklearn.cluster import KMeans
+import re
+from gensim.models.word2vec import Word2Vec
+import string
+from typing import Union
+from models.word_2_vec_preprocessing import Preprocessing, Embedder, Clustering, Word2VecSummarizer
+from models.load_model import load_model,summarize_text,count_phrases
+
+summarizer = load_model()
+print('MODEL LOADED')
+
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "uploads"
@@ -28,7 +44,7 @@ def index():
         # else:
         text = request.form.get('input-text')
         
-        print("text:\t", speech_text)
+        print("text:\t", text)
 
         if file and allowed_file(file.filename):
             if file.filename.endswith('.docx'):
@@ -45,8 +61,19 @@ def index():
 
         if text:
             if request.form.get('summary'):
+                compression=request.form.get('compression-slider')
+                if compression:
+                    compression=compression
+                else:
+                    compression = 0.5
                 print("Summary Selected")
-                # summary_result = summary.process_summary(text)
+                print('compression\t: ', compression)
+                try:
+                    summary_result = summarize_text(text,count_phrases(text),0.5,summarizer)
+                except Exception as ex:
+                    print(ex)
+                    summary_result = "Sorry. Summarization failed."
+                print('summary:\t', summary_result)
                 content = text + "text wurde verarbeitet"
 
             if request.form.get('classification'):
@@ -57,7 +84,7 @@ def index():
             # processed_text = text
 
     # return render_template('index.html', content=content,processed_text=processed_text, summary_result=summary_result, classification_result=classification_result)
-    return render_template('index.html', content=content) 
+    return render_template('index.html', content=content, summary_result=summary_result) 
 
 if __name__ == '__main__':
     app.run()
