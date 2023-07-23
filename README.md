@@ -11,7 +11,7 @@
 - PowerPoint-Präsentation für Meilenstein 2: https://bwedu-my.sharepoint.com/:p:/r/personal/qusay_hamid_bwedu_de/Documents/Uni/6.%20Semester/Projektrealisierung/Projektrealisierung%20-%20Pr%C3%A4si2.pptx?d=wc0076b57cc274607945fed77ef0d523e&csf=1&web=1&e=Zcwrye
 - Datenoverview: https://docs.google.com/spreadsheets/d/1Ao4AXzcxP6CF7MxJtBZ7itrM7ZmydxwnM8shs1syXGY/edit?usp=sharing
 - Projektabschluss: https://de.overleaf.com/read/vccqwsqqdnrv
-<br>
+
 ## Deadlines
 - 24.05.2023 – Projektauftrag
 - 20.06.2023 – Zwischenstand
