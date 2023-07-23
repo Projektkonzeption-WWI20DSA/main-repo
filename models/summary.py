@@ -4,4 +4,4 @@ def summerize_text(text):
     
     summary = "This is a sample summary. (original text: " +text+")"  # Replace with the generated summary
     
-    return summarya
+    return summary

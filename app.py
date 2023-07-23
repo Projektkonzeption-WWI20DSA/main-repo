@@ -46,12 +46,17 @@ def index():
     summary_result = None
     classification_result = None
     content = 'Enter your text here or upload a file...'
+   
 
     if request.method == 'POST':
-        text = request.form.get('input-text')
         file = request.files.get('file')
         speech_text = request.form.get('speechText')
-        text = speech_text
+
+        # if speech_text != "":
+        #     text = speech_text
+        # else:
+        text = request.form.get('input-text')
+        
         print("text:\t", speech_text)
 
         if file and allowed_file(file.filename):
