@@ -64,12 +64,14 @@ def index():
                 compression=request.form.get('compression-slider')
                 if compression:
                     compression=compression
+                    print("Compression Selected", compression)
                 else:
                     compression = 0.5
                 print("Summary Selected")
-                print('compression\t: ', compression)
+                #print('compression\t: ', compression)
                 try:
-                    summary_result = summarize_text(text,count_phrases(text),0.5,summarizer)
+                    compression = int(compression)/100
+                    summary_result = summarize_text(text,count_phrases(text),compression,summarizer)
                 except Exception as ex:
                     print(ex)
                     summary_result = "Sorry. Summarization failed."

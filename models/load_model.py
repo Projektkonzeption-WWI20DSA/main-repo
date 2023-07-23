@@ -22,7 +22,7 @@ def count_phrases(text):
     return len(sent_tokenize(text))
 
 def summarize_text(text, len_text, compression_rate, summarizer):
-    sentences = summarizer.summarize(text, num_sentences=(len_text-round(len_text*compression_rate)))
+    sentences = summarizer.summarize(text, use_first=False, num_sentences=(round(len_text*compression_rate)))
     summary = ''
     for i in sentences:
         summary = summary + ' ' + i
