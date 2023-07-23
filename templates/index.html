@@ -112,7 +112,7 @@
                 <div class="form-check form-switch mb-3">
                   <input class="form-check-input" type="checkbox" role="switch" id="summary" name="summary" value="summary">
                   <label class="form-check-label" for="summary">Summary</label>
-                  <input type="range" class="form-range" id="compression-slider" min="0" max="80" step="1">
+                  <input type="range" class="form-range" id="compression-slider" name="compression-slider" min="20" max="80" step="1">
                   <div id="compression-value" class="text-center mt-2">40%</div>
                 </div>
 
@@ -143,7 +143,7 @@
               <h4>Summary</h4>
             </div>
              <div class="card-body text-center">
-              <textarea class="form-control mt-2" id="summary_output" placeholder="The summary will be displayed here..." readonly></textarea>
+              <textarea class="form-control mt-2" id="summary_output" readonly>{{ summary_result }}</textarea>
             </div>
           </div>
         </div>

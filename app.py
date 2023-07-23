@@ -13,25 +13,12 @@ import re
 from gensim.models.word2vec import Word2Vec
 import string
 from typing import Union
-from word_2_vec_preprocessing import Preprocessing, Embedder, Clustering, Word2VecSummarizer
-from load_model import load_model
+from models.word_2_vec_preprocessing import Preprocessing, Embedder, Clustering, Word2VecSummarizer
+from models.load_model import load_model,summarize_text,count_phrases
 
 summarizer = load_model()
 print('MODEL LOADED')
 
-def count_phrases(text):
-    def split_sentence(text):
-        """used to split given text into sentences"""
-        sentences = sent_tokenize(text)
-        return [sent for sent in sentences]
-    return len(sent_tokenize(text))
-
-def summarize_text(text, len_text, compression_rate, summarizer):
-    sentences = summarizer.summarize(text, num_sentences=(len_text-round(len_text*compression_rate)))
-    summary = ''
-    for i in sentences:
-        summary = summary + ' ' + i
-    return summary
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "uploads"
@@ -57,7 +44,7 @@ def index():
         # else:
         text = request.form.get('input-text')
         
-        print("text:\t", speech_text)
+        print("text:\t", text)
 
         if file and allowed_file(file.filename):
             if file.filename.endswith('.docx'):
@@ -74,8 +61,19 @@ def index():
 
         if text:
             if request.form.get('summary'):
+                compression=request.form.get('compression-slider')
+                if compression:
+                    compression=compression
+                else:
+                    compression = 0.5
                 print("Summary Selected")
-                # summary_result = summary.process_summary(text)
+                print('compression\t: ', compression)
+                try:
+                    summary_result = summarize_text(text,count_phrases(text),0.5,summarizer)
+                except Exception as ex:
+                    print(ex)
+                    summary_result = "Sorry. Summarization failed."
+                print('summary:\t', summary_result)
                 content = text + "text wurde verarbeitet"
 
             if request.form.get('classification'):
@@ -86,7 +84,7 @@ def index():
             # processed_text = text
 
     # return render_template('index.html', content=content,processed_text=processed_text, summary_result=summary_result, classification_result=classification_result)
-    return render_template('index.html', content=content) 
+    return render_template('index.html', content=content, summary_result=summary_result) 
 
 if __name__ == '__main__':
     app.run()
