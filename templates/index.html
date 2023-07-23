@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
+<html lang="en" data-bs-theme="light">
   <head>
     <title>Text Summarization and Classification</title>
     <meta charset="utf-8">
@@ -15,20 +15,20 @@
 
   <body>
     <!-- Theme Button -->
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle" style="z-index: 999;">
       <button class="btn bg-primary text-white py-2 dropdown-toggle d-flex align-items-center"
           id="bd-theme"
           type="button"
           aria-expanded="false"
           data-bs-toggle="dropdown"
-          aria-label="Toggle theme (auto)">
-        <i class="bi bi-circle-half theme-icon-active my-1" style="font-size: 1em;"></i>
+          aria-label="Toggle theme">
+          <i id="themeButtonIcon" class="bi bi-moon-stars-fill theme-icon-active my-1" style="font-size: 1em;"></i>
         <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
       </button>
 
       <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
         <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light" aria-pressed="true">
             <i class="bi bi-sun-fill me-2 opacity-50 theme-icon" style="font-size: 1em;"></i>
             Light
             <i class="bi bi-check2 ms-auto d-none" style="font-size: 1em;"></i>
@@ -41,13 +41,13 @@
             <i class="bi bi-check2 ms-auto d-none" style="font-size: 1em;"></i>
           </button>
         </li>
-        <li>
+        <!-- <li>
           <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
             <i class="bi bi-circle-half me-2 opacity-50 theme-icon" style="font-size: 1em;"></i>
             Auto
             <i class="bi bi-check2 ms-auto d-none" style="font-size: 1em;"></i>
           </button>
-        </li>
+        </li> -->
       </ul>
     </div>
 
@@ -199,9 +199,8 @@
 
           // Map themes to their corresponding icon classes
           const themeIcons = {
-              'light': 'bi-sun-fill',
-              'dark': 'bi-moon-stars-fill',
-              'auto': 'bi-circle-half'
+              'light': 'bi-moon-stars-fill',
+              'dark': 'bi-sun-fill'
           };
 
           // Attach click event listener to each dropdown item
