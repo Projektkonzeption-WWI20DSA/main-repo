@@ -113,7 +113,7 @@
                   <input class="form-check-input" type="checkbox" role="switch" id="summary" name="summary" value="summary">
                   <label class="form-check-label" for="summary">Summary</label>
                   <input type="range" class="form-range" id="compression-slider" name="compression-slider" min="20" max="80" step="1">
-                  <div id="compression-value" class="text-center mt-2">40%</div>
+                  <div id="compression-value" class="text-center mt-2">50%</div>
                 </div>
 
                 <input type="hidden" id="speechText" name="speechText">
@@ -143,7 +143,7 @@
               <h4>Summary</h4>
             </div>
              <div class="card-body text-center">
-              <textarea class="form-control mt-2" id="summary_output" placeholder="Your summary will be displayed here..." readonly>{{ summary_result }}</textarea>
+              <textarea class="form-control mt-2" id="summary_output" placeholder="Your summary will be displayed here..." oninput="resizeSummaryTextarea()" readonly>{{ summary_result }}</textarea>
             </div>
           </div>
         </div>
@@ -238,57 +238,69 @@
           
       });
 
-    // Source: https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
-    // This code will not work on the firefox browser
-    function showAPINotSupportedNotification() {
-      alert("Web Speech API is not supported in this browser.");
-    }
-
-    function updateTextArea(text) {
-      const inputText = document.getElementById("input-text");
-      inputText.value = text;
-
-      const hiddenInput = document.getElementById("speechText");
-      hiddenInput.value = text;
-    }
-
-    function toggleSpeechRecognition() {
-      if (!window.webkitSpeechRecognition) {
-        showAPINotSupportedNotification();
-        return;
+      // Source: https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
+      // This code will not work on the firefox browser
+      function showAPINotSupportedNotification() {
+        alert("Web Speech API is not supported in this browser.");
       }
 
-      if (!recognition) {
-        recognition = new webkitSpeechRecognition();
-        recognition.continuous = true;
-        recognition.interimResults = true;
+      function updateTextArea(text) {
+        const inputText = document.getElementById("input-text");
+        inputText.value = text;
 
-        recognition.onresult = function(event) {
-          let transcript = "";
+        const hiddenInput = document.getElementById("speechText");
+        hiddenInput.value = text;
+      }
 
-          for (let i = event.resultIndex; i < event.results.length; i++) {
-            if (event.results[i].isFinal) {
-              transcript += event.results[i][0].transcript + " ";
-            } else {
-              transcript += event.results[i][0].transcript;
+      function toggleSpeechRecognition() {
+        if (!window.webkitSpeechRecognition) {
+          showAPINotSupportedNotification();
+          return;
+        }
+
+        if (!recognition) {
+          recognition = new webkitSpeechRecognition();
+          recognition.continuous = true;
+          recognition.interimResults = true;
+
+          recognition.onresult = function(event) {
+            let transcript = "";
+
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+              if (event.results[i].isFinal) {
+                transcript += event.results[i][0].transcript + " ";
+              } else {
+                transcript += event.results[i][0].transcript;
+              }
             }
-          }
-          updateTextArea(transcript);
-        };
+            updateTextArea(transcript);
+          };
+        }
+
+        if (isRecording) {
+          recognition.stop();
+          isRecording = false;
+          document.getElementById("microphoneButton").classList.remove("btn-danger"); 
+          microphoneButton.innerHTML = '<i class="fa-solid fa-microphone"></i>  Start Recording';
+        } else {
+          recognition.start();
+          isRecording = true;
+          document.getElementById("microphoneButton").classList.add("btn-danger"); 
+          microphoneButton.innerHTML = '<i class="fa-solid fa-microphone"></i>  Stop Recording';
+        }
+      }
+    
+      function resizeSummaryTextarea() {
+        const summaryTextarea = document.getElementById("summary_output");
+        summaryTextarea.style.height = "auto";
+        summaryTextarea.style.height = summaryTextarea.scrollHeight + "px";
       }
 
-      if (isRecording) {
-        recognition.stop();
-        isRecording = false;
-        document.getElementById("microphoneButton").classList.remove("btn-danger"); 
-        microphoneButton.innerHTML = '<i class="fa-solid fa-microphone"></i>  Start Recording';
-      } else {
-        recognition.start();
-        isRecording = true;
-        document.getElementById("microphoneButton").classList.add("btn-danger"); 
-        microphoneButton.innerHTML = '<i class="fa-solid fa-microphone"></i>  Stop Recording';
-      }
-    }
+      // Call the function on initial load
+      window.addEventListener("load", resizeSummaryTextarea);
+
+      // Call the function whenever the textarea content changes
+      document.getElementById("summary_output").addEventListener("input", resizeSummaryTextarea);
     </script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
