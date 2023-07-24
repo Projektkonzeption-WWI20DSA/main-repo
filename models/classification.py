@@ -3,7 +3,7 @@ import numpy as np
 
 def classify_text(text):
     # Load the trained model
-    loaded_model = joblib.load('trained_model.joblib')
+    loaded_model = joblib.load('./models/trained_classification_model.joblib')
 
     # Make prediction using the loaded model
     probabilities = loaded_model.predict_proba([text])[0]

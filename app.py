@@ -16,7 +16,7 @@ from typing import Union
 from models.word_2_vec_preprocessing import Preprocessing, Embedder, Clustering, Word2VecSummarizer
 from models.load_model import load_model,summarize_text,count_phrases
 
-#summarizer = load_model()
+summarizer = load_model()
 print('MODEL LOADED')
 
 
@@ -80,13 +80,19 @@ def index():
 
             if request.form.get('classification'):
                 print("Classification Selected")
-                # classification_result = classification.process_classification(text)
+                
+                try:
+                    classification_result = classification.classify_text(text)
+                except Exception as ex:
+                    print(ex)
+                    classification_result = "Sorry. Classification failed."
+
                 content = text
 
             # processed_text = text
 
     # return render_template('index.html', content=content,processed_text=processed_text, summary_result=summary_result, classification_result=classification_result)
-    return render_template('index.html', content=content, summary_result=summary_result) 
+    return render_template('index.html', content=content, summary_result=summary_result, classification_result=classification_result) 
 
 if __name__ == '__main__':
     app.run()

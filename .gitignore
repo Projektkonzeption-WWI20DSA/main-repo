@@ -36,3 +36,4 @@ __pycache__/app.cpython-39.pyc
 __pycache__/app.cpython-39.pyc
 *.pyc
 models/nn.h5
+models/trained_classification_model.joblib

@@ -153,7 +153,7 @@
               <h4>Classification</h4>
             </div>
             <div class="card-body text-center">
-              <textarea class="form-control mt-2" id="classification_output" placeholder="The class will be displayed here..." readonly></textarea>
+              <textarea class="form-control mt-2" id="classification_output" placeholder="The class will be displayed here..." oninput="resizeSummaryTextarea()" readonly>{{ classification_result }}</textarea>
             </div>
           </div>
         </div>
