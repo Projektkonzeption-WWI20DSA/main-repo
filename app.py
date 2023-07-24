@@ -16,7 +16,7 @@ from typing import Union
 from models.word_2_vec_preprocessing import Preprocessing, Embedder, Clustering, Word2VecSummarizer
 from models.load_model import load_model,summarize_text,count_phrases
 
-summarizer = load_model()
+#summarizer = load_model()
 print('MODEL LOADED')
 
 
