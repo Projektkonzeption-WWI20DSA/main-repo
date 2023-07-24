@@ -33,6 +33,16 @@ def classify_text(text):
         "class_percentages": class_percentage_dict
     }
 
-    return result
+    # make the results more readable
+    def format_result(result):
+        res_str = f'Predicted class: {result["predicted_class"]}\n\n'
+        res_str += 'Class percentages:\n'
+        for class_label, percentage in result['class_percentages'].items():
+            res_str += f'{class_label}: {percentage}\n'
+        return res_str  # This line is necessary to return the string
 
+    formatted_result = format_result(result)
 
+    print('Predicted Classes: '+formatted_result)
+
+    return formatted_result
