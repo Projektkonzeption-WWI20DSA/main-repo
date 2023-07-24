@@ -7,6 +7,7 @@ import gensim.downloader as api
 import numpy as np
 from dataclasses import dataclass
 from typing import Dict, List, Tuple
+import nltk
 from nltk.tokenize import sent_tokenize
 from sklearn.cluster import KMeans
 import re
@@ -16,6 +17,7 @@ from typing import Union
 from models.word_2_vec_preprocessing import Preprocessing, Embedder, Clustering, Word2VecSummarizer
 from models.load_model import load_model,summarize_text,count_phrases
 
+nltk.download('punkt')
 summarizer = load_model()
 print('MODEL LOADED')
 
