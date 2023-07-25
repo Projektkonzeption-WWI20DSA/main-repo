@@ -45,10 +45,11 @@ pip install -r requirements.txt
 
 To use this Project, follow these steps:
 
-```bash
-# Run the Flask Server
-flask run
-```
+Run the Flask Server:  
+run `flask run`
+
+Stop the Flask Server:  
+Press `Cmd` + `C`
 
 ## File Structure
 The file structure of the project looks like this:
@@ -72,3 +73,4 @@ main-repo/
 |-- README.md
 |-- .gitignore
 ```
+
