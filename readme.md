@@ -2,7 +2,7 @@
 
 ## Description
 
-This project uses Flask as the backend and applies pretrained Machine Learning algorithms summarize and classify text. It is possible to type text into the input box, upload a file or use text to speech.
+This project uses Flask as the backend and applies pretrained Machine Learning algorithms summarize and classify text. It is possible to type text into the input box, upload a file or use speech to text.
 
 ## Prerequisites
 
