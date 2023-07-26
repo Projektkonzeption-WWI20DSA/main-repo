@@ -45,6 +45,9 @@ pip install -r requirements.txt
 
 To use this Project, follow these steps:
 
+Download the classification model from 
+save the model to `./models/`
+
 Run the Flask Server:  
 run `flask run`
 
