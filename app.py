@@ -18,7 +18,7 @@ from models.word_2_vec_preprocessing import Preprocessing, Embedder, Clustering,
 from models.load_model import load_model,summarize_text,count_phrases
 
 nltk.download('punkt')
-summarizer = load_model()
+summarizer = load_model() #loading summarizer model
 print('MODEL LOADED')
 
 
@@ -74,7 +74,7 @@ def index():
                 try:
                     compression = int(compression)/100
                     summary_result = summarize_text(text,count_phrases(text),compression,summarizer)
-                    word_compression_rate =  len(word_tokenize(summary_result))/len(word_tokenize(text))
+                    word_compression_rate =  len(word_tokenize(summary_result))/len(word_tokenize(text))#word compression rate calculation
                     summary_result=summary_result + '\n'+'----------------------------'+'\n' + 'Erreichte Kompressionsrate:\t ' + str(round(word_compression_rate,2))
                 except Exception as ex:
                     print(ex)
