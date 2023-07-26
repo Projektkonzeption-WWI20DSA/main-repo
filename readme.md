@@ -43,9 +43,9 @@ pip install -r requirements.txt
 
 ## Using MyFlask ML Project
 
-To use this Project, follow these steps:
+To use this Project, follow these steps:  
 
-Download the classification model from 
+Download the classification model from   
 save the model to `./models/`
 
 Run the Flask Server:  
