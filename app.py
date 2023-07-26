@@ -8,7 +8,7 @@ import numpy as np
 from dataclasses import dataclass
 from typing import Dict, List, Tuple
 import nltk
-from nltk.tokenize import sent_tokenize
+from nltk.tokenize import sent_tokenize, word_tokenize
 from sklearn.cluster import KMeans
 import re
 from gensim.models.word2vec import Word2Vec
@@ -74,6 +74,8 @@ def index():
                 try:
                     compression = int(compression)/100
                     summary_result = summarize_text(text,count_phrases(text),compression,summarizer)
+                    word_compression_rate =  len(word_tokenize(summary_result))/len(word_tokenize(text))
+                    summary_result=summary_result + '\n'+'----------------------------'+'\n' + 'Erreichte Kompressionsrate:\t ' + str(round(word_compression_rate,2))
                 except Exception as ex:
                     print(ex)
                     summary_result = "Sorry. Summarization failed."
