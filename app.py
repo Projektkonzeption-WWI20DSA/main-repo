@@ -32,8 +32,8 @@ def allowed_file(filename):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     processed_text = None
-    summary_result = None
-    classification_result = None
+    summary_result = "The summarized text will be displayed here..."
+    classification_result = "The classification result will be displayed here..."
     content = 'Enter your text here or upload a file...'
    
 
