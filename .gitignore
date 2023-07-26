@@ -1,1 +1,4 @@
 example.ipynb
+models/trained_classification_model.joblib
+models/__pycache__/load_model.cpython-311.pyc
+models/__pycache__/word_2_vec_preprocessing.cpython-311.pyc

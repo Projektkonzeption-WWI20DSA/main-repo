@@ -75,3 +75,10 @@ Mögliche Unterpunkte sollten herausgefunden werden
 -   Trennung der verschiedenen Abgaben?
 - Wie deatilliert / genau auf Projekttechnik eingehen (z.B. Scrum)
 - Wie viek fiktive Vorrasusetzungne können wir erschaffen? Auftreten als Unternehmen? z.B. Herausforderungen auf unsere Situtation als Studis anpassen
+
+
+
+# Quellen:
+- https://towardsdatascience.com text-summarization-using-tf-idf-e64a0644ace3
+- https://medium.com/@ashins1997/text-summarization-f2542bc6a167
+- https://towardsdatascience.com/text-summarization-in-python-with-jaro-winkler-and-pagerank-72d693da94e8
