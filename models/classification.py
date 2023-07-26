@@ -35,14 +35,14 @@ def classify_text(text):
 
     # make the results more readable
     def format_result(result):
-        res_str = f'Predicted class: {result["predicted_class"]}\n\n'
-        res_str += 'Class percentages:\n'
+        res_str = f'{result["predicted_class"]}\n\n'
+        res_str += 'Class probabilities:\n'
         for class_label, percentage in result['class_percentages'].items():
-            res_str += f'{class_label}: {percentage}\n'
-        return res_str  # This line is necessary to return the string
+            res_str += f'\t{class_label}: {percentage:.2f}%\n'  # Format the percentage with 2 digits
+        return res_str
 
     formatted_result = format_result(result)
 
-    print('Predicted Classes: '+formatted_result)
+    print('Predicted Classes:' + formatted_result + "%")
 
     return formatted_result
