@@ -34,11 +34,13 @@ def classify_text(text):
     }
 
     # make the results more readable
-    def format_result(result):
-        res_str = f'{result["predicted_class"]}\n\n'
+    def format_result(result, num_top_classes=3):  # Set num_top_classes to 3 by default
+        res_str = f'{result["predicted_class"]}\n------------------\n'
         res_str += 'Class probabilities:\n'
-        for class_label, percentage in result['class_percentages'].items():
-            res_str += f'\t{class_label}: {percentage:.2f}%\n'  # Format the percentage with 2 digits
+        for i, (class_label, percentage) in enumerate(result['class_percentages'].items()):
+            res_str += f'{class_label}: {percentage:.2f}%\n'  # Format the percentage with 2 digits
+            if i == num_top_classes - 1:  # Stop after the top num_top_classes
+                break
         return res_str
 
     formatted_result = format_result(result)
