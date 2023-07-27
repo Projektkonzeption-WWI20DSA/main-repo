@@ -81,7 +81,7 @@ main-repo/
 The Website is split in the areas:  
 1. On the Top you can enter the text. For this you can type a text into the input box, upload a file or use text to speech.  
    After that, choose the desired processing options. Then press `'process text'`.  
-   ** File Upload: Note that you can only choose between .docx and .txt files.**
+   ** File Upload: Note that you can only choose between .docx and .txt files.**  
    ** Voice Input: Note that this function does not work in Firefox **
 3. The summary box will display the summary.
 4. The classification box will give the predicted class and the percentages for all classes.
