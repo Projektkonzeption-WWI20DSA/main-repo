@@ -80,7 +80,7 @@ def index():
                     print(ex)
                     summary_result = "Sorry. Summarization failed."
                 print('summary:\t', summary_result)
-                content = text + "text wurde verarbeitet"
+                content = text
 
             if request.form.get('classification'):
                 print("Classification Selected")
