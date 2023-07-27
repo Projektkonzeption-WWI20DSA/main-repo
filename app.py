@@ -18,7 +18,8 @@ from models.word_2_vec_preprocessing import Preprocessing, Embedder, Clustering,
 from models.load_model import load_model,summarize_text,count_phrases
 
 nltk.download('punkt')
-summarizer = load_model() #loading summarizer model
+# loading summarizer model
+summarizer = load_model()
 print('MODEL LOADED')
 
 
@@ -40,10 +41,6 @@ def index():
     if request.method == 'POST':
         file = request.files.get('file')
         speech_text = request.form.get('speechText')
-
-        # if speech_text != "":
-        #     text = speech_text
-        # else:
         text = request.form.get('input-text')
         
         print("text:\t", text)
@@ -58,8 +55,6 @@ def index():
                 text += file.read().decode('utf-8')
                 content = text
 
-            # Setzen Sie das Textfeld auf den Inhalt der hochgeladenen Datei
-            # request.form['input-text'] = text
 
         if text:
             if request.form.get('summary'):
@@ -70,7 +65,6 @@ def index():
                 else:
                     compression = 0.5
                 print("Summary Selected")
-                #print('compression\t: ', compression)
                 try:
                     compression = int(compression)/100
                     summary_result = summarize_text(text,count_phrases(text),compression,summarizer)
@@ -93,9 +87,7 @@ def index():
 
                 content = text
 
-            # processed_text = text
 
-    # return render_template('index.html', content=content,processed_text=processed_text, summary_result=summary_result, classification_result=classification_result)
     return render_template('index.html', content=content, summary_result=summary_result, classification_result=classification_result) 
 
 if __name__ == '__main__':
