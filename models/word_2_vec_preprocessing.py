@@ -8,7 +8,7 @@ from gensim.models.word2vec import Word2Vec
 import string
 from typing import Union
 
-
+#source: https://utomorezadwi.medium.com/bert-extractive-summarizer-vs-word2vec-extractive-summarizer-which-one-is-better-and-faster-c6d6d172cb91
 ############################################################################
 
 REGEX_URL = r'((http|https)\:\/\/)[a-zA-Z0-9\.\/\?\:@\-_=#]+\.([a-zA-Z]){2,6}([a-zA-Z0-9\.\&\/\?\:@\-_=#])*'

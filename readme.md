@@ -2,7 +2,7 @@
 
 ## Description
 
-This project uses Flask as the backend and applies pretrained Machine Learning algorithms summarize and classify text. It is possible to type text into the input box, upload a file or use text to speech.
+This project uses Flask as the backend and applies pretrained Machine Learning algorithms summarize and classify text. It is possible to type text into the input box, upload a file or use speech to text.
 
 ## Prerequisites
 
@@ -80,9 +80,11 @@ main-repo/
 ## User-Manual
 The Website is split in the areas:  
 1. On the Top you can enter the text. For this you can type a text into the input box, upload a file or use text to speech.  
-   After that, choose the desired processing options. Then press `'process text'`.
-2. The summary box will display the summary.
-3. The classification box will give the predicted class and the percentages for all classes.
+   After that, choose the desired processing options. Then press `'process text'`.  
+   ** File Upload: Note that you can only choose between .docx and .txt files.**  
+   ** Voice Input: Note that this function does not work in Firefox **
+3. The summary box will display the summary.
+4. The classification box will give the predicted class and the percentages for all classes.
 
 ![screenshot](https://github.com/Projektkonzeption-WWI20DSA/main-repo/assets/105482809/2ed28662-d274-4508-8af3-da2a10f3aae1)
 
